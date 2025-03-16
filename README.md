@@ -70,9 +70,16 @@ Open `http://localhost:4200/` in the browser.
 Add screenshots of the application in action here.
 
 Example:
-![Create Person Page](./screenshots/create-new-person.png)
-![Edit Person Page](./screenshots/edit-person.png)
-![People List Page](./screenshots/person-list.png)
+<p align="center">
+  <img src="./screenshots/create-new-person.png" alt="Create Person Page" width="400"/>
+</p>
+<p align="center">
+  <img src="./screenshots/edit-person.png" alt="Edit Person Page" width="400"/>
+</p>
+<p align="center">
+  <img src="./screenshots/person-list.png" alt="People List Page" width="400"/>
+</p>
+
 
 ## Contribution
 Feel free to fork the repository and submit pull requests.
