@@ -1,0 +1,97 @@
+<div class="create-container">
+  <h2>Create New Person</h2>
+  <form [formGroup]="personForm" (ngSubmit)="onSubmit()" class="creation-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name"
+        [class.invalid]="personForm.get('name')?.invalid && personForm.get('name')?.touched"
+      >
+      <div *ngIf="personForm.get('name')?.errors" class="error-message">
+        <span *ngIf="personForm.get('name')?.hasError('required')">Name is required</span>
+        <span *ngIf="personForm.get('name')?.hasError('minlength')">
+          Name must be at least 2 characters
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input 
+        type="number" 
+        id="age" 
+        formControlName="age"
+        min="1"
+        step="1"
+        [class.invalid]="personForm.get('age')?.invalid && personForm.get('age')?.touched"
+      >
+      <div *ngIf="personForm.get('age')?.errors" class="error-message">
+        <span *ngIf="personForm.get('age')?.hasError('required')">Age is required</span>
+        <span *ngIf="personForm.get('age')?.hasError('min')">
+          Age must be at least 1
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select 
+        id="gender" 
+        formControlName="gender"
+        [class.invalid]="personForm.get('gender')?.invalid && personForm.get('gender')?.touched"
+      >
+        <option value="">Select Gender</option>
+        <option *ngFor="let gender of genderOptions" [value]="gender">{{gender}}</option>
+      </select>
+      <div *ngIf="personForm.get('gender')?.errors" class="error-message">
+        <span *ngIf="personForm.get('gender')?.hasError('required')">Gender is required</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Mobile:</label>
+      <input 
+        type="tel" 
+        id="mobile" 
+        formControlName="mobile"
+        [class.invalid]="personForm.get('mobile')?.invalid && personForm.get('mobile')?.touched"
+        placeholder="10-digit number"
+      >
+      <div *ngIf="personForm.get('mobile')?.errors" class="error-message">
+        <span *ngIf="personForm.get('mobile')?.hasError('required')">Mobile is required</span>
+        <span *ngIf="personForm.get('mobile')?.hasError('pattern')">
+          Must be a 10-digit number
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        [class.invalid]="personForm.get('email')?.invalid && personForm.get('email')?.touched"
+      >
+      <div *ngIf="personForm.get('email')?.errors" class="error-message">
+        <span *ngIf="personForm.get('email')?.hasError('required')">Email is required</span>
+        <span *ngIf="personForm.get('email')?.hasError('email')">
+          Invalid email format
+        </span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button 
+        type="submit" 
+        [disabled]="personForm.invalid"
+        class="btn submit-btn"
+      >
+        Create Person
+      </button>
+      <a routerLink="/" class="btn cancel-btn">Cancel</a>
+    </div>
+  </form>
+</div>

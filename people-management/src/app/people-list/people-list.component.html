@@ -1,0 +1,31 @@
+<!-- people-list.component.html -->
+<div class="people-container">
+  <h2>People List</h2>
+  <button [routerLink]="['/create']" class="btn create">Create New Person</button>
+  <div *ngIf="people$ | async as people" class="people-list">
+    <div class="person-card" *ngFor="let person of people">
+      <div class="person-info">
+        <h3>{{ person.name }}</h3>
+        <p>Age: {{ person.age }}</p>
+        <p>Gender: {{ person.gender }}</p>
+        <p>Mobile: {{ person.mobile }}</p>
+        <p>Email: {{ person.email }}</p>
+      </div>
+      
+      <div class="person-actions">
+        <button 
+          type="button" 
+          class="btn edit-btn"
+          (click)="onEditClick(person)">
+          Edit
+        </button>
+        <button 
+          type="button" 
+          class="btn delete-btn"
+          (click)="deletePerson(person._id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
