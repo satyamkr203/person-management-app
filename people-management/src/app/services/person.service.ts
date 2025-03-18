@@ -38,6 +38,7 @@ export class PersonService {
   }
 
   // Get single person by ID
+  // handle for single 
   getPersonById(id: string): Observable<Person> {
     return this.http.get<Person>(`${this.apiUrl}/${id}`);
   }
